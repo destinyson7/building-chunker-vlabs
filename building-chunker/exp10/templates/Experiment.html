@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div id="answersData">
+    {{ strf }}
+</div>
+
+<p style="color:blue">Select a language</p>
+
+<select name="language" id="language" autocomplete="off" oninput="selectLanguage()">
+    <option selected="" value="null">---Select Language---</option>
+    <option value="a">English</option>
+    <option value="b">Hindi</option>
+</select>
+
+<p id="display-1" style="color:blue">
+    <br/><br/>
+    First step is to train a corpus, select the size of a corpus
+</p>
+
+<select name="size-of-corpus" id="size-of-corpus" autocomplete="off" oninput="selectSizeOfCorpus()">
+    <option selected="" value="null">---Select Size of Training corpus---</option>
+    <option value="a">1k</option>
+    <option value="b">10k</option>
+    <option value="c">100k</option>
+    <option value="d">200k</option>
+</select>
+
+<p id="display-2" style="color:blue">
+    <br/><br/>
+    Select the algorithm for Training
+</p>
+
+<select class="algorithm" name="algorithm" id="algorithm" autocomplete="off" oninput="selectAlgorithm()">
+    <option selected="" value="null">---Select Algorithm for Training---</option>
+    <option value="a">CRF </option>
+    <option value="b">HMM </option>
+</select>
+
+<p id="display-3" style="color:blue">
+    <br/><br/>
+    Now, select feature for training
+</p>
+
+<select class="algo" name="feature" id="feature" autocomplete="off" oninput="selectFeature()">
+    <option selected="" value="null">---Select Feature for Training---</option>
+    <option value="a">only lexicon </option>
+    <option value="b">only pos </option>
+    <option value="c">lexicon and pos </option>
+</select>
+
+<p id="display-4" style="color:blue">
+    <br/><br/>
+    Training is completed
+    <br/><br/>
+    Now, we have to do testing, a corpus of size 2k is chosen
+    <br/><br/>
+    Check the accuracy
+</p>
+
+<button id="button-1" class="algorithm" onclick="checkAccuracy()">Check Accuracy</button>
+<p style="font-family: none" id="print-answer"></p>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/experiment.js') }}"></script>
+
+{% endblock content %}          
